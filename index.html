@@ -1,0 +1,92 @@
+‎<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengistu Birhan | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact" class="hire-btn">Contact</a></li>
+        </ul>
+        <button id="theme-toggle">Dark Mode</button>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="profile-container">
+            <img src="myPic.webp" alt="Mengistu Birhan" class="profile-img">
+        </div>
+        <div class="hero-content">
+            <h2>Hi, My Name is <span class="highlight">Mengistu Birhan</span></h2>
+            <p class="typing-text">I am a BSc <span>Software Engineering Student & Web Developer</span></p>
+            <p class="hero-description"><h3>"I specialize in building modern frontend interfaces with React and managing robust databases with SQL."</h3></p>
+            <div class="hero-btns">
+                <a href="portfolio/I.jpg" target="_blank" class="btn btn-outline">View Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>List of Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Online Examination System</h3><br>
+                <p>Built with Java.</p>
+                <p>Traditional online tests are prone to cheating and data loss due to poor internet connectivity. Therefor I developed a system featuring Auto-Save functionality and Tab-Switch detection to ensure a fair and reliable testing environment.</p>
+            </div>
+            <div class="project-card">
+                <h3>Internship Management System</h3><br>
+                <p>Built using HTML, CSS, javascript, React.</p>
+                <p>Manual coordination between universities and companies often results in poor monitoring. Therefor I built a centralized platform that automates weekly logbook submissions and simplifies the final grading process.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Professional Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">⚛️<h3>Frontend Development</h3></div>
+                <p>I specialize in building visually stunning, high-performance web interfaces using <strong>HTML, CSS, JavaScript,</strong> and <strong>React</strong>.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Responsive Web Design</h3>
+                <p>Every website I build is 100% responsive. I ensure your site looks and functions perfectly on all screen sizes.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🗄️</div>
+                <h3>Database Management</h3>
+                <p>I design and manage robust database architectures using <strong>SQL</strong>. I focus on efficient schema design and data security.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p>Have a project in mind? Let's build something amazing together!</p>
+        <form id="contact-form">
+            <input type="text" id="from_name" placeholder="Your Name" required>
+            <input type="email" id="user_email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="contact-container">
+            <div class="contact-methods">
+                <a href="mailto:mengistubirhan721@gmail.com" class="contact-box"><span>📧</span><p>Email</p></a>
+                <a href="https://t.me/ManSoft21" target="_blank" class="contact-box"><span>✈️</span><p>Telegram</p></a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Developer Mengistu. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
