@@ -13,6 +13,7 @@
             <li><a href="#projects">Portfolio</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact" class="hire-btn">Contact</a></li>
+            <li><button id="hireMeBtn" class="hire-me-btn">Hire Me</button></li>
         </ul>
         <button id="theme-toggle">Dark Mode</button>
     </nav>
@@ -84,9 +85,22 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+   <div id="hireModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Hire Me</h2>
+
+        <a href="https://www.upwork.com/" target="_blank">Upwork</a>
+      
+        <a href="https://github.com/" target="_blank">GitHub</a>
+    </div>
+</div>
+    
     <footer class="footer">
         <p>&copy; <span id="year"></span> Developer Mengistu. All Rights Reserved.</p>
     </footer>
+    
+</div>
+<script src="script.js"></script>
 </body>
 </html>

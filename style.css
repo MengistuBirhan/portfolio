@@ -248,3 +248,85 @@ nav {
     from { width: 0; }
     to { width: 100%; }
 }
+/* Hire Me Button */
+.hire-me-btn {
+    background: linear-gradient(45deg, #ff7a18, #ffb347);
+    border: none;
+    padding: 10px 18px;
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.hire-me-btn:hover {
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    transform: scale(1.1);
+}
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+/* Modal Content */
+.modal-content {
+    background: #fff;
+    margin: 10% auto;
+    padding: 25px;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.4s ease;
+}
+
+/* Buttons */
+.modal-btn {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.modal-btn:hover {
+    background: #ff7a18;
+}
+
+/* Close */
+.close-btn {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+.modal-content a {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.modal-content a:hover {
+    opacity: 0.8;
+}

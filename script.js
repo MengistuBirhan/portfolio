@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
-            
             if (body.classList.contains('dark-theme')) {
                 themeToggle.textContent = '☀️ Light Mode';
                 localStorage.setItem('theme', 'dark');
@@ -23,16 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. Year Adjustment ---
+    // --- 2. YEAR UPDATE ---
     const yearElement = document.getElementById("year");
     if (yearElement) yearElement.textContent = new Date().getFullYear();
 
-    // --- 3. Telegram Form ---
+    // --- 3. CONTACT FORM (Telegram) ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
+            // የራስህን መረጃ እዚህ አስገባ
             const token = "7985126768:AAFxM4CGu6HTESZEMEBBH_MBU3mRMszSWek";
             const chat_id = "1494064754";
             
@@ -41,19 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const messageInput = document.getElementById('message');
 
             if(!nameInput || !emailInput || !messageInput) {
-                alert("Error: IDs 'from_name', 'user_email' or 'message' not found in HTML!");
+                alert("Error: Form IDs not found!");
                 return;
             }
 
-            const name = nameInput.value;
-            const email = emailInput.value;
-            const message = messageInput.value;
-
-            const full_message = `🔔 አዲስ መልዕክት ከፖርትፎሊዮዎ:\n\n👤 ስም: ${name}\n📧 ኢሜል: ${email}\n📝 መልዕክት: ${message}`;
-            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(full_message)}`;
+            const full_message = `🔔 አዲስ መልዕክት ከፖርትፎሊዮዎ:\n\n👤 ስም: ${nameInput.value}\n📧 ኢሜል: ${emailInput.value}\n📝 መልዕክት: ${messageInput.value}`;
+            const url = https;//api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(full_message)};
 
             const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
             btn.innerText = 'Sending...';
             btn.disabled = true;
 
@@ -62,17 +57,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (response.ok) {
                         alert('Thank you! Your message has been sent successfully.');
                         contactForm.reset();
-                    } else {
-                        alert('Something went wrong. Please try again later.');
-                    }
+                    } else { alert('Something went wrong.'); }
                 })
-                .catch(() => {
-                    alert('Connection error. Please check your internet.');
-                })
+                .catch(() => alert('Connection error.'))
                 .finally(() => {
-                    btn.innerText = originalText;
+                    btn.innerText = 'Send Message';
                     btn.disabled = false;
                 });
         });
+    }
+
+    // --- 4. HIRE ME MODAL LOGIC (የተስተካከለ) ---
+    const hireBtn = document.getElementById("hireMeBtn");
+    const modal = document.getElementById("hireModal");
+    const closeBtn = document.querySelector(".close-btn"); // በ HTMLህ መሰረት ተስተካክሏል
+
+    if (hireBtn && modal && closeBtn) {
+        hireBtn.onclick = () => {
+            modal.style.display = "block";
+        };
+
+        closeBtn.onclick = () => {
+            modal.style.display = "none";
+        };
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
     }
 });
