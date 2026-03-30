@@ -330,3 +330,57 @@ nav {
 .modal-content a:hover {
     opacity: 0.8;
 }
+.contact-links {
+    display: flex;
+    justify-content: center; /* መሃል ላይ እንዲሆኑ */
+    gap: 20px;               /* በበተኖቹ መካከል ክፍተት */
+    margin-top: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;      /* ጠርዙን ለስላሳ ለማድረግ */
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid #007bff;
+    color: #007bff;
+}
+
+/* Email በተን ላይ Mouse ሲያርፍ */
+.contact-item:hover {
+    background-color: #007bff;
+    color: white;
+    transform: translateY(-3px); /* ትንሽ ከፍ እንዲል */
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+body {
+    /* ምስሉን ለመጨመር እና በላዩ ላይ ቀለል ያለ 'Overlay' ለማድረግ */
+    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                url('Bgp\(0\)[1].jpg'); 
+    
+    background-size: cover;          /* ምስሉ ስክሪኑን ሙሉ እንዲሸፍን */
+    background-position: center;     /* ምስሉ መሃል ላይ እንዲሆን */
+    background-attachment: fixed;    /* ስክሮል ሲደረግ ምስሉ እንዳይንቀሳቀስ (Static) */
+    background-repeat: no-repeat;
+    
+    color: #2d3436;                  /* የጽሁፍ ቀለም (ጥቁር መሳይ) */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* ጽሁፎቹ ይበልጥ ጎልተው እንዲታዩ */
+h1, h2, h3 {
+    color: #0984e3;                  /* የርዕስ ቀለም (ለምሳሌ ሰማያዊ) */
+    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+section {
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
