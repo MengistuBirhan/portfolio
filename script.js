@@ -3,10 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
+    // መጀመሪያ የተቀመጠ ጭብጥ ካለ መፈተሽ
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme === 'dark') {
         body.classList.add('dark-theme');
-        if(themeToggle) themeToggle.innerHTML = '☀️ Light Mode'; // innerHTML ተጠቀምን
+        if(themeToggle) themeToggle.innerHTML = '☀️ Light Mode';
+    } else {
+        if(themeToggle) themeToggle.innerHTML = '🌙 Dark Mode';
     }
 
     if (themeToggle) {
@@ -26,41 +29,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearElement = document.getElementById("year");
     if (yearElement) yearElement.textContent = new Date().getFullYear();
 
-    // --- 3. CONTACT FORM (Telegram - የተስተካከለ) ---
+   // --- 2. CONTACT FORM (TELEGRAM FIXED) ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const token = "7985126768:AAFxM4CGu6HTESZEMEBBH_MBU3mRMszSWek";
-            const chat_id = "1494064754";
+            // የእርስዎ ትክክለኛ መረጃ
+            const token = "8796895419:AAFCS7cDBP2P6ut7osmi71_e7KCZKkXQoMU";
+            const chat_id = "7814962463"; // ቁጥሩን ብቻ!
             
             const nameInput = document.getElementById('from_name');
             const emailInput = document.getElementById('user_email');
             const messageInput = document.getElementById('message');
 
-            // እዚህ ጋር || (OR) ምልክት ተስተካክሏል
-            if(!nameInput || !emailInput || !messageInput) {
-                alert("Error: Form IDs not found!");
+            if (!nameInput || !emailInput || !messageInput) {
+                alert("ስህተት፡ በ HTML ውስጥ 'from_name' ወይም 'user_email' የሚሉ IDs አልተገኙም!");
                 return;
             }
 
-            // እዚህ ጋር Backticks () ተስተካክለዋል
-            const full_message = `🔔 አዲስ መልዕክት ከፖርትፎሊዮዎ:\n\n👤 ስም: ${nameInput.value}\n📧 ኢሜል: ${emailInput.value}\n📝 መልዕክት: ${messageInput.value}`;
-            const url = https;//api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(full_message)}`;
+            const full_message = `🔔 አዲስ መልዕክት:\n\n👤 ስም: ${nameInput.value}\n📧 ኢሜል: ${emailInput.value}\n📝 መልዕክት: ${messageInput.value}`;
+            const url = https;//api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(full_message)};
 
             const btn = contactForm.querySelector('button');
-            btn.innerText = 'Sending...';
+            btn.innerText = 'በመላክ ላይ...';
             btn.disabled = true;
 
             fetch(url)
                 .then(response => {
                     if (response.ok) {
-                        alert('Thank you! Your message has been sent successfully.');
+                        alert('መልዕክቱ በትክክል ተልኳል!');
                         contactForm.reset();
-                    } else { alert('Something went wrong.'); }
+                    } else {
+                        alert('ስህተት፡ ቦቱን ቴሌግራም ላይ "Start" ማለታችሁን አረጋግጡ!');
+                    }
                 })
-                .catch(() => alert('Connection error.'))
+                .catch(() => alert('የኢንተርኔት ግንኙነት የለም!'))
                 .finally(() => {
                     btn.innerText = 'Send Message';
                     btn.disabled = false;
