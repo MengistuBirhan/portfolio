@@ -15,21 +15,19 @@
     --transition: all 0.3s ease;
 }
 
-/* 1. የዳርክ ሞድ በተኑ መደበኛ ገጽታ */
 #theme-toggle {
-    background-color: var(--accent-color); /* ሰማያዊ ቀለም */
-    color: #ffffff !important;            /* ጽሁፉ እና አይኮኑ ነጭ እንዲሆኑ */
+    margin-left: auto;   /* በስተግራ ያለውን ክፍተት በሙሉ ገፍቶ ወደ ቀኝ ያስጠጋዋል */
+    background-color: var(--accent-color);
+    color: #ffffff !important;
     border: none;
-    padding: 10px 18px;
-    border-radius: 25px;                   /* ዳር ዳሩ እንዲከበብ */
+    padding: 8px 15px;   /* መጠኑን ትንሽ ቀነስ አድርጌዋለሁ */
+    border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 8px;                              /* በአይኮኑ እና በጽሁፉ መካከል ክፍተት */
-    transition: all 0.3s ease;             /* ለውጡ ለስላሳ እንዲሆን */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    outline: none;
+    gap: 8px;
+    transition: all 0.3s ease;
 }
 
 /* 2. አይጥ በተኑ ላይ ሲያርፍ (Hover) የሚመጣ ለውጥ */
@@ -67,15 +65,14 @@ body {
 /* 1. የሜኑው ዋና ክፍል (Navigation Container) */
 nav {
     display: flex;
-    flex-direction: row;        /* በኮምፒውተር ላይ ጎን ለጎን እንዲሆኑ */
-    justify-content: space-between; /* በኮምፒውተር ላይ ርቀታቸውን ይጠብቃሉ */
-    align-items: center;
-    padding: 15px 5%;
+    flex-direction: row;        /* ጎን ለጎን እንዲሆኑ */
+    justify-content: space-between; /* ክፍተቱን እኩል ያከፋፍላል */
+    align-items: center;        /* ሁሉንም ወደ መሃል (vertical) ያሰልፋል */
+    padding: 10px 2%;           /* ከዳር ያለውን ርቀት ለመቀነስ 5% የነበረውን ወደ 2% ዝቅ አድርገው */
     background-color: var(--nav-bg);
     position: sticky;
     top: 0;
     z-index: 1000;
-    flex-wrap: wrap;            /* ስክሪኑ ሲያንስ ወደ ታች እንዲታጠፍ */
 }
 
 
@@ -241,12 +238,37 @@ nav {
 }
 
 #contact-form input, #contact-form textarea {
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background: var(--card-bg);
-    color: var(--text-color);
     width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9); /* ትንሽ ግልጽ እንዲሆን */
+    color: #333;
+    font-size: 16px;
+}
+
+/* ክሊክ ሲደረግ ጠርዙ እንዲበራ */
+#contact-form input:focus, #contact-form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+#contact-form button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: 0.3s;
+}
+
+#contact-form button:hover {
+    background-color: #2980b9;
 }
 
 /* 7. Footer */
@@ -260,20 +282,22 @@ nav {
 /* 3. ለስልክ ማስተካከያ (Mobile Specific) */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;  /* ስልክ ላይ ሁሉንም ወደ ታች ያደርጋል */
-        justify-content: center; /* መሃል ላይ ያደርጋቸዋል */
-        gap: 15px;               /* በበተኑ እና በሊንኮቹ መካከል ክፍተት ይሰጣል */
+        flex-direction: row;      /* ስልክ ላይም ጎን ለጎን እንዲሆኑ */
+        flex-wrap: wrap;          /* ቦታ ካልበቃቸው ብቻ ወደ ታች ይውረዱ */
+        justify-content: space-between;
+        padding: 10px 15px;
     }
 
     .nav-links {
-        width: 100%;             /* ሙሉ ስፋት እንዲኖረው */
-        justify-content: center; /* ሊንኮቹን መሃል ላይ ያሰልፋል */
-        padding: 0;
+        order: 1;                 /* ቅደም ተከተል ለማስተካከል */
+        width: 100%;              /* ሊንኮቹ መሃል ላይ እንዲመጡ */
+        justify-content: center;
+        margin-top: 10px;
     }
-    
-    /* Hire Me በተን ካለህ እሱንም መሃል ለማድረግ */
-    .nav-right, #theme-toggle {
-        margin: 0 auto;
+
+    #theme-toggle {
+        order: 0;                 /* በተኑ ከላይ እንዲቆይ */
+        margin-left: auto;
     }
 }
 
@@ -434,17 +458,82 @@ section {
     transition: var(--transition);
 }
 
-/* ለዳርክ ሞድ የተለየ ማስተካከያ */
+/* ============================================================
+   DARK THEME SETTINGS (መጨረሻ ላይ የሚጨመር)
+   ============================================================ */
+
+/* 1. የከለር ቫሪያብሎችን መቀየር */
+.dark-theme {
+    --bg-color: #121212;     /* ጥቁር ዳራ */
+    --text-color: #ffffff;   /* ነጭ ጽሁፍ */
+    --card-bg: #1e1e1e;      /* የሳጥኖች ቀለም */
+    --nav-bg: #181818;       /* የሜኑ ቀለም */
+    --accent-color: #f1c40f; /* ቢጫ ቀለም (ለርዕሶች) */
+}
+
+/* 2. ቦዲውን ማስተካከል (ምስሉን ያጠፋዋል) */
+body.dark-theme {
+    background-color: var(--bg-color) !important;
+    background-image: none !important; /* ላይት ሞድ ላይ የነበረውን ምስል ያጠፋዋል */
+    color: var(--text-color) !important;
+}
+
+/* 3. ናቭ ባር (NAV BAR) ማስተካከያ - የጠፉት ሊንኮች እዚህ ይስተካከላሉ */
+.dark-theme nav {
+    background-color: var(--nav-bg) !important;
+    border-bottom: 1px solid #333;
+}
+
+/* የጠፉት Home, Portfolio, etc. ሊንኮች እዚህ ነጭ ይሆናሉ */
+.dark-theme .nav-links li a {
+    color: #ffffff !important;
+}
+
+.dark-theme .nav-links li a:hover {
+    color: var(--accent-color) !important;
+}
+
+/* 4. ሁሉንም ርዕሶች ጎልተው እንዲታዩ ማድረግ */
+.dark-theme h1, 
+.dark-theme h2, 
+.dark-theme h3, 
+.dark-theme .highlight {
+    color: var(--accent-color) !important;
+    text-shadow: none !important;
+}
+
+/* 5. የፕሮጀክት እና የሰርቲፊኬት ካርዶች */
+.dark-theme .project-card, 
+.dark-theme .service-card, 
 .dark-theme .certificate-card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid #333;
+    color: #ffffff !important;
+}
+
+/* በካርዶቹ ውስጥ ያሉ ጽሁፎች */
+.dark-theme .project-card p, 
+.dark-theme .service-card p, 
+.dark-theme .certificate-card p,
+.dark-theme .hero-description {
+    color: #cccccc !important; /* ለስላሳ ያለ ነጭ */
+}
+
+/* 6. የኮንታክት ፎርም (Contact Form) */
+.dark-theme #contact-form input, 
+.dark-theme #contact-form textarea {
     background-color: #2d2d2d !important;
     color: #ffffff !important;
+    border: 1px solid #444 !important;
 }
 
-.dark-theme .certificate-card h3, 
-.dark-theme .certificate-card p {
+.dark-theme #contact-form input::placeholder, 
+.dark-theme #contact-form textarea::placeholder {
+    color: #888 !important;
+}
+
+/* 7. ሞዳል (Hire Me Modal) */
+.dark-theme .modal-content {
+    background-color: #2d2d2d !important;
     color: #ffffff !important;
-}
-
-.certificate-card .btn {
-    margin-top: 15px;
 }
