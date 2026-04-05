@@ -63,16 +63,18 @@ body {
 
 /* 2. Navigation - Responsive */
 /* 1. የሜኑው ዋና ክፍል (Navigation Container) */
+/* ይህንን ከ @media ውጭ (በላይኛው ክፍል) ጻፈው */
 nav {
     display: flex;
-    flex-direction: row;        /* ጎን ለጎን እንዲሆኑ */
-    justify-content: space-between; /* ክፍተቱን እኩል ያከፋፍላል */
-    align-items: center;        /* ሁሉንም ወደ መሃል (vertical) ያሰልፋል */
-    padding: 10px 2%;           /* ከዳር ያለውን ርቀት ለመቀነስ 5% የነበረውን ወደ 2% ዝቅ አድርገው */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
     background-color: var(--nav-bg);
-    position: sticky;
+    position: fixed; /* በስልክም በኮምፒውተርም ቋሚ እንዲሆን fixed ተጠቀም */
     top: 0;
+    width: 100%;
     z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 
