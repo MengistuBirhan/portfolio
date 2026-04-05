@@ -280,6 +280,20 @@ nav {
     padding: 40px 5%;
     text-align: center;
 }
+/* 2. ዋናው ይዘት (Main content) የቀረውን ክፍተት እንዲሞላ */
+main, .hero, .content-wrapper {
+    flex: 1 0 auto;
+}
+
+/* 3. ፉተሩን ማስተካከል */
+footer, .footer {
+    flex-shrink: 0;
+    width: 100% !important;
+    background-color: #1a1a1a !important; /* ጥቁሩን ቀለም ማረጋገጥ */
+    margin: 0 !important;
+    padding: 20px 0;
+    position: relative;
+}
 
 /* --- ስልክ ላይ ሁሉንም ነገር አስተካክሎ የሚያሳይ ኮድ --- */
 @media (max-width: 768px) {
@@ -344,6 +358,26 @@ nav {
     body {
         overflow-x: hidden; /* ወደ ጎን መሸራተት (Scroll) እንዳይኖር */
         width: 100%;
+    }
+     body {
+        overflow-x: hidden; /* ወደ ጎን መሸራተትን ያጠፋል */
+        width: 100vw;
+    }
+    
+    .footer {
+        width: 100vw !important;
+        left: 0;
+        right: 0;
+    }
+     .nav-buttons {
+        flex-direction: row; /* በተኖቹን ጎን ለጎን ለማድረግ */
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    #theme-toggle, .hire-me-btn {
+        padding: 5px 10px; /* መጠናቸውን በስልክ ላይ ትንሽ ቀነስ ማድረግ */
+        font-size: 12px;
     }
 }
 
