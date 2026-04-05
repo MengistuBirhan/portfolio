@@ -279,25 +279,23 @@ nav {
     text-align: center;
 }
 
+/* --- ስልክ ላይ ሁሉንም ነገር አስተካክሎ የሚያሳይ ኮድ --- */
 @media (max-width: 768px) {
-    /* 1. ናቭ ባር ሙሉ ስፋት እንዲኖረው */
+    /* 1. ናቭ ባር እና ሆም እንዳይጠፋ */
     nav {
-        display: flex;
-        flex-direction: column; /* ነገሮችን ወደ ታች መደርደር */
-        align-items: center;
+        flex-direction: column; 
         padding: 10px 0;
         width: 100%;
+        height: auto;
     }
 
-    /* 2. ሊንኮቹ (Home, Portfolio...) መሃል ላይ በሁለት መስመር እንዲደረደሩ */
     .nav-links {
         display: flex;
-        flex-wrap: wrap;        /* ቦታ ካነሳቸው ወደ ታችኛው መስመር እንዲወርዱ */
+        flex-wrap: wrap; /* ቦታ ካነሰው ወደ ታች እንዲወርድ */
         justify-content: center;
-        gap: 12px;              /* በመካከላቸው ያለው ክፍተት */
-        padding: 10px;
         width: 100%;
-        margin: 0;
+        padding: 10px;
+        gap: 15px; /* በሊንኮቹ መካከል ትንፋሽ እንዲኖር */
     }
 
     .nav-links li {
@@ -306,21 +304,44 @@ nav {
 
     .nav-links li a {
         font-size: 14px;
-        white-space: nowrap;    /* ጽሁፉ እንዳይቆረጥ */
+        display: block; /* ክሊክ ለማድረግ እንዲመች */
     }
 
-    /* 3. በተኖቹ (Hire Me እና Dark Mode) ከሊንኮቹ በታች እንዲሆኑ */
-    .nav-buttons {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-        justify-content: center;
+    /* በተኖቹ እንዳይደራረቡ */
+    #theme-toggle, .hire-me-btn {
+        margin: 5px;
+        font-size: 13px;
+    }
+
+    /* 2. ፎርሙ (Get In Touch) መሃል እንዲሆን */
+    section {
         width: 100%;
+        padding: 40px 15px; /* ከዳርና ከዳር 15px ክፍተት እንዲኖር */
+        box-sizing: border-box;
     }
 
-    /* በስልክ ጊዜ በተኑ ወደ ቀኝ መገፋቱን እንዲያቆም */
-    #theme-toggle {
-        margin-left: 0 !important;
+    #contact-form {
+        width: 100%;
+        max-width: 100%; /* ወደ ግራ እንዳይሄድ ሙሉ ስፋት ይውሰድ */
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 3. ፉተር (Copyright) ጥቁሩ ዳራ ሙሉ እንዲሆን */
+    .footer {
+        width: 100%;
+        padding: 30px 0;
+        margin-top: 50px;
+        background-color: #1a1a1a; /* ዳራው እንዳይቆራረጥ */
+        display: block;
+        clear: both;
+    }
+
+    /* ማንኛውም ነጭ ክፍተት (Gaps) እንዳይኖር */
+    body {
+        overflow-x: hidden; /* ወደ ጎን መሸራተት (Scroll) እንዳይኖር */
+        width: 100%;
     }
 }
 
