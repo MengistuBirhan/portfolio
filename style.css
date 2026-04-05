@@ -279,25 +279,48 @@ nav {
     text-align: center;
 }
 
-/* 3. ለስልክ ማስተካከያ (Mobile Specific) */
 @media (max-width: 768px) {
+    /* 1. ናቭ ባር ሙሉ ስፋት እንዲኖረው */
     nav {
-        flex-direction: row;      /* ስልክ ላይም ጎን ለጎን እንዲሆኑ */
-        flex-wrap: wrap;          /* ቦታ ካልበቃቸው ብቻ ወደ ታች ይውረዱ */
-        justify-content: space-between;
-        padding: 10px 15px;
+        display: flex;
+        flex-direction: column; /* ነገሮችን ወደ ታች መደርደር */
+        align-items: center;
+        padding: 10px 0;
+        width: 100%;
     }
 
+    /* 2. ሊንኮቹ (Home, Portfolio...) መሃል ላይ በሁለት መስመር እንዲደረደሩ */
     .nav-links {
-        order: 1;                 /* ቅደም ተከተል ለማስተካከል */
-        width: 100%;              /* ሊንኮቹ መሃል ላይ እንዲመጡ */
+        display: flex;
+        flex-wrap: wrap;        /* ቦታ ካነሳቸው ወደ ታችኛው መስመር እንዲወርዱ */
         justify-content: center;
-        margin-top: 10px;
+        gap: 12px;              /* በመካከላቸው ያለው ክፍተት */
+        padding: 10px;
+        width: 100%;
+        margin: 0;
     }
 
+    .nav-links li {
+        list-style: none;
+    }
+
+    .nav-links li a {
+        font-size: 14px;
+        white-space: nowrap;    /* ጽሁፉ እንዳይቆረጥ */
+    }
+
+    /* 3. በተኖቹ (Hire Me እና Dark Mode) ከሊንኮቹ በታች እንዲሆኑ */
+    .nav-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* በስልክ ጊዜ በተኑ ወደ ቀኝ መገፋቱን እንዲያቆም */
     #theme-toggle {
-        order: 0;                 /* በተኑ ከላይ እንዲቆይ */
-        margin-left: auto;
+        margin-left: 0 !important;
     }
 }
 
