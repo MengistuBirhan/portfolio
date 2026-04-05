@@ -99,11 +99,12 @@
     <section id="contact" class="contact">
         <h2 class="section-title">Get In Touch</h2>
         <p>Have a project in mind? Let's build something amazing together!</p>
-        <form id="contact-form">
-    <input type="text" id="from_name" placeholder="Full Name" required> 
-    <input type="email" id="user_email" placeholder="Email" required>
-    <textarea id="message" placeholder="Please Here Write a Message..." required></textarea>  
-    <button type="submit">Send Message</button>
+        <form id="contact-form" action="https://formspree.io/f/mjgppqlr" method="POST">
+  <input type="text" name="name" placeholder="Full Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Please Here Write a Message..." required></textarea>
+  
+  <button type="submit">Send Message</button>
 </form>
 
         <div class="contact-links">

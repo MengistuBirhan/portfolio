@@ -29,48 +29,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearElement = document.getElementById("year");
     if (yearElement) yearElement.textContent = new Date().getFullYear();
 
-   // --- 2. CONTACT FORM (TELEGRAM FIXED) ---
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
 
-            // የእርስዎ ትክክለኛ መረጃ
-            const token = "8796895419:AAFCS7cDBP2P6ut7osmi71_e7KCZKkXQoMU";
-            const chat_id = "7814962463"; // ቁጥሩን ብቻ!
-            
-            const nameInput = document.getElementById('from_name');
-            const emailInput = document.getElementById('user_email');
-            const messageInput = document.getElementById('message');
+   // --- 3. CONTACT FORM (FORMSPREE FIXED) ---
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
 
-            if (!nameInput || !emailInput || !messageInput) {
-                alert("ስህተት፡ በ HTML ውስጥ 'from_name' ወይም 'user_email' የሚሉ IDs አልተገኙም!");
-                return;
+        const btn = contactForm.querySelector('button');
+        btn.innerText = 'Sending...';
+        btn.disabled = true;
+
+        // መረጃውን በቀጥታ ከፎርሙ መሰብሰብ
+        const formData = new FormData(contactForm);
+
+        fetch(contactForm.getAttribute('action'), { // action-ን እዚህ ጋር ያገኘዋል
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
             }
-
-            const full_message = `🔔 አዲስ መልዕክት:\n\n👤 ስም: ${nameInput.value}\n📧 ኢሜል: ${emailInput.value}\n📝 መልዕክት: ${messageInput.value}`;
-            const url = https;//api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(full_message)};
-
-            const btn = contactForm.querySelector('button');
-            btn.innerText = 'በመላክ ላይ...';
-            btn.disabled = true;
-
-            fetch(url)
-                .then(response => {
-                    if (response.ok) {
-                        alert('መልዕክቱ በትክክል ተልኳል!');
-                        contactForm.reset();
-                    } else {
-                        alert('ስህተት፡ ቦቱን ቴሌግራም ላይ "Start" ማለታችሁን አረጋግጡ!');
-                    }
-                })
-                .catch(() => alert('የኢንተርኔት ግንኙነት የለም!'))
-                .finally(() => {
-                    btn.innerText = 'Send Message';
-                    btn.disabled = false;
-                });
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Message sent successfully!!');
+                contactForm.reset();
+            } else {
+                alert('Error: Formspree could not receive the message.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Network error! Please check your internet connection or try again later.');
+        })
+        .finally(() => {
+            btn.innerText = 'Send Message';
+            btn.disabled = false;
         });
-    }
+    });
+}
 
     // --- 4. HIRE ME MODAL LOGIC ---
     const hireBtn = document.getElementById("hireMeBtn");
